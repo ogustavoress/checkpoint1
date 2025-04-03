@@ -7,6 +7,7 @@ public class Paciente{
     private String bairro;
     private String email;
     private String telefone_completo;
+    
     public Long getId() {
         return id;
     }

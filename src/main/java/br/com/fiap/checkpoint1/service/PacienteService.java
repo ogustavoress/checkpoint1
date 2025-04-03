@@ -3,12 +3,10 @@ package br.com.fiap.checkpoint1.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.fiap.checkpoint1.dto.PacienteRequestCreate;
-import br.com.fiap.checkpoint1.dto.PacienteResponse;
 import br.com.fiap.checkpoint1.dto.PacienterequestUpdate;
 import br.com.fiap.checkpoint1.model.Paciente;
 
@@ -16,7 +14,7 @@ import br.com.fiap.checkpoint1.model.Paciente;
 public class PacienteService {
 
     private List<Paciente> pacientes;
-    private long sequence;
+    private long sequence = 1L;
 
     public Paciente createPaciente(PacienteRequestCreate dto){
         Paciente paciente = new Paciente();
@@ -26,6 +24,7 @@ public class PacienteService {
         paciente.setBairro(dto.getBairro());
         paciente.setEmail(dto.getEmail());
         paciente.setTelefone_completo(dto.getTelefone_completo());
+        pacientes.add(paciente);
         return paciente;
     }
     public Optional<Paciente> updatePaciente(Long id, PacienterequestUpdate dto){

@@ -1,9 +1,6 @@
 package br.com.fiap.checkpoint1.dto;
 
-import org.springframework.http.ResponseEntity;
-
 import br.com.fiap.checkpoint1.model.Paciente;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 public class PacienteResponse {
     private Long id;
@@ -12,30 +9,17 @@ public class PacienteResponse {
     private String bairro;
     private String email;
     private String telefone_completo;
- 
-public ResponseEntity<PacienteResponse> create(@RequestBody PacienteRequestCreate dto){
-
-    Paciente pacienteCreated = new Paciente();
-    PacienteResponse response = new PacienteResponse();
-
-    response.setId(pacienteCreated.getId());
-    response.setNome(pacienteCreated.getNome());
-    response.setEndereco(pacienteCreated.getEndereco());
-    response.setBairro(pacienteCreated.getBairro());
-    response.setEmail(pacienteCreated.getEmail());
-    response.setTelefone_completo(pacienteCreated.getTelefone_completo());
-    
-    return ResponseEntity.status(201).body(response);
-}
 
 public PacienteResponse toDto(Paciente paciente){
-    this.setId(paciente.getId());
-    this.setNome(paciente.getNome());
-    this.setEndereco(paciente.getEndereco());
-    this.setBairro(paciente.getBairro());
-    this.setEmail(paciente.getEmail());
-    this.setTelefone_completo(paciente.getTelefone_completo());
-    return this;
+    
+    PacienteResponse response = new PacienteResponse();
+    response.setId(paciente.getId());
+    response.setNome(paciente.getNome());
+    response.setEndereco(paciente.getEndereco());
+    response.setBairro(paciente.getBairro());
+    response.setEmail(paciente.getEmail());
+    response.setTelefone_completo(paciente.getTelefone_completo());
+    return response;
 }
 
 public Long getId() {
